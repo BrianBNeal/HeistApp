@@ -8,10 +8,3 @@
 */
 
 //make some notes for a potential plan of action
-
-/* -make a team member and print it
- *   -make a TeamMember class, including a ToString()
- * -gonna need to validate the inputs are correct (string, int, decimal)
- *   -validation methods located in TeamMember class?  No, before the creation of the object, so during input.
- * -maybe a TeamMemberFactory class to handle all inquiries and validation?
- */
