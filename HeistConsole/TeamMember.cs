@@ -44,17 +44,17 @@ public class TeamMember
     }
 
 
-    //TODO: should return the three properties and values
-//    public override string ToString()
-//    {
-//        return @$"
-//====================
-//Name: {Name}
-//Skill: {SkillLevel}
-//Courage: {CourageFactor}
-//====================
-//";
-//    }
+    TODO: should return the three properties and values
+    public override string ToString()
+    {
+        return @$"
+====================
+Name: {Name}
+Skill: {SkillLevel}
+Courage: {CourageFactor}
+====================
+";
+    }
 
 
 }

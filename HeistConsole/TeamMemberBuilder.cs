@@ -56,6 +56,8 @@ public class TeamMemberBuilder
             courageInput = Console.ReadLine();
             teamMember.CourageFactor = courageAsDec;
         }
+
+        Console.WriteLine(teamMember);
     }
 
     private bool ValidSkillInput(int input)
