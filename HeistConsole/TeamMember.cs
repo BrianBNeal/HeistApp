@@ -44,7 +44,7 @@ public class TeamMember
     }
 
 
-    TODO: should return the three properties and values
+    //TODO: should return the three properties and values
     public override string ToString()
     {
         return @$"
