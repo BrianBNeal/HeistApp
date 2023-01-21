@@ -18,12 +18,27 @@
 
 public class TeamMember
 {
+    //overladed constructor
+    //overload - same name, different signature
+    public TeamMember()
+    {
+
+    }
+
+    public TeamMember(string name, int skill, decimal courage)
+    {
+        Name = name;
+        SkillLevel = skill;
+        CourageFactor = courage;
+    }
+
     public string Name { get; set; }
 
-    private int _skill;
+    private int _skill; //best practice - fields start with underscore
     public int SkillLevel
     {
-        get => _skill;
+        get => _skill; 
+
         set
         { 
             if (IsValidSkillLevel(value))
@@ -37,14 +52,25 @@ public class TeamMember
         }
     } // should be positive
     public decimal CourageFactor { get; set; }  //should be between 0.0 and 2.0
-
+    //TeamMember.CourageFactor
     private bool IsValidSkillLevel(int skillLevel)
     {
+        //List<string> collection = new List<string>();
+        ////syntactic sugar - fancier/easier syntax for doing something that could already be done
+        //foreach (var item in collection)
+        //{
+        //    item.ToUpper();
+        //}
+
+        //collection
+        //    .Select(item => item.ToUpper())
+        //    .Where(item => item.StartsWith("a"))
+        //    .First();
+            
+
         return skillLevel >= 0;
     }
 
-
-    //TODO: should return the three properties and values
     public override string ToString()
     {
         return @$"
@@ -55,6 +81,8 @@ Courage: {CourageFactor}
 ====================
 ";
     }
+
+    
 
 
 }

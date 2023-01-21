@@ -3,37 +3,43 @@
 //the job of this class is to handle collecting info and creating new team members
 public class TeamMemberBuilder
 {
-    public void Run()
+    public TeamMember Run()
     {
-        /*  Phase 1
-    1. Print the message "Plan Your Heist!".
-    2. Create a way to store a single team member. A team member will have a *name*, a *skill Level* and a *courage factor*. The *skill Level* will be a positive integer and the *courage factor* will be a decimal between 0.0 and 2.0.
-    3. Prompt the user to enter a team member's name and save that name.
-    4. Prompt the user to enter a team member's skill level and save that skill level with the name.
-    5. Prompt the user to enter a team member's courage factor and save that courage factor with the name.
-    6. Display the team member's information.
+        /*  Phase 2
+         *  1. Create a way to store several team members.
+         *     -loop our TeamMemberBuilder
+            2. Collect several team members' information.
+                - Team class?  List<TeamMember>
+            3. Stop collecting team members when a blank name is entered.
+            4. Display a message containing the number of members of the team.
+            5. Display each team member's information.
 */
 
         // Part 1
-        Console.Write("Plan Your Heist!");
+        
+
+        //TeamMember teamMember = new TeamMember("Superman", 1_000_000, 2.0m);
+        //Console.WriteLine(teamMember);
 
         TeamMember teamMember = new TeamMember();
 
-        Console.WriteLine("Enter name: ");
+        Console.WriteLine("Enter name (leave blank to exit): ");
         teamMember.Name = Console.ReadLine();
 
-        while (string.IsNullOrWhiteSpace(teamMember.Name))
+        if (string.IsNullOrWhiteSpace(teamMember.Name))
         {
-            Console.WriteLine("Name cannot be blank: ");
-            teamMember.Name = Console.ReadLine();
+            //they want to leave, return blank member
+            return teamMember;
         }
 
-        Console.WriteLine("Enter skill level: ");
-        string skillInput = Console.ReadLine();
-        int skillAsInt = -1;
+        int skillAsInt;
+        bool isInt;
 
         do
         {
+            Console.WriteLine("Enter skill level: ");
+            string skillInput = Console.ReadLine();
+            isInt = int.TryParse(skillInput, out skillAsInt); //"-1", -1
             try
             {
                 teamMember.SkillLevel = skillAsInt;
@@ -41,28 +47,22 @@ public class TeamMemberBuilder
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                skillInput = Console.ReadLine();
             }
-        } while (!int.TryParse(skillInput, out skillAsInt));
+        } while (!isInt );
 
-        teamMember.SkillLevel = skillAsInt;
+        string courageInput;
+        bool userInputWasANumber;
+        decimal courageAsDec;
 
-        Console.WriteLine("Enter courage factor: ");
-        string courageInput = Console.ReadLine();
-        //|| courageAsDec < 0m || courageAsDec > 2m
-        while (!decimal.TryParse(courageInput, out decimal courageAsDec))
+        do
         {
-            Console.WriteLine("Courage must be between 0.0 and 2.0: ");
+            string name = "";
+            Console.WriteLine("Enter courage factor (0.0 - 2.0): ");
             courageInput = Console.ReadLine();
+            userInputWasANumber = decimal.TryParse(courageInput, out courageAsDec);
             teamMember.CourageFactor = courageAsDec;
-        }
+        } while (!userInputWasANumber || courageAsDec < 0m || courageAsDec > 2m);
 
-        Console.WriteLine(teamMember);
-    }
-
-    private bool ValidSkillInput(int input)
-    {
-
-        return input <= 0;
+        return teamMember;
     }
 }
